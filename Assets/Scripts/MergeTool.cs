@@ -14,6 +14,8 @@ public class MergeTool : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		//picking up/dropping object
 		if (Input.GetKeyDown(KeyCode.E) && heldObject == null) {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
@@ -30,19 +32,35 @@ public class MergeTool : MonoBehaviour {
 			ReleaseObject(heldObject);
 		}
 
-
+		//moving held object
 		if (heldObject != null) {
 			Rigidbody rigid = heldObject.GetComponent<Rigidbody>();
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			Vector3 targetPos = ray.GetPoint(2);
 			rigid.velocity = -(heldObject.transform.position-targetPos)*10;
 		}
+
+		//duplicating object
+		if (Input.GetMouseButtonDown(0) && heldObject == null) {
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+
+			if (Physics.Raycast(ray, out hit, grabRange)) {
+				GameObject obj = hit.collider.gameObject;
+				Carryable carryable = obj.GetComponent<Carryable>();
+				if (carryable != null) {
+					CloneObject(obj);
+				}
+			}
+		}
+
 	}
 
 	void GrabObject(GameObject obj) {
 		Carryable carryable = obj.GetComponent<Carryable>();
 		carryable.SetTransparent();
 		carryable.held = true;
+		obj.layer = 9; //held objects
 
 		heldObject = obj;
 	}
@@ -51,7 +69,13 @@ public class MergeTool : MonoBehaviour {
 		Carryable carryable = obj.GetComponent<Carryable>();
 		carryable.SetOpaque();
 		carryable.held = false;
+		obj.layer = 8; //objects
 
 		heldObject = null;
+	}
+
+	void CloneObject(GameObject obj) {
+		GameObject clone = Instantiate(obj);
+		GrabObject(clone);
 	}
 }
