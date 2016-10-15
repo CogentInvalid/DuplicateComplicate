@@ -6,7 +6,7 @@ public class Button : MonoBehaviour {
 	public Material offMaterial;
 	public Material onMaterial;
 
-	public GameObject targetObject;
+	public GameObject[] targetObject;
 	public string onFunction;
 	public string offFunction;
 	public int buttonIndex;
@@ -41,12 +41,14 @@ public class Button : MonoBehaviour {
 
 	void SwitchOn() {
 		gameObject.GetComponent<MeshRenderer>().material = onMaterial;
-		targetObject.SendMessage(onFunction, this);
+        foreach(GameObject obj in targetObject)
+            obj.SendMessage(onFunction, this);
 	}
 
 	void SwitchOff() {
 		gameObject.GetComponent<MeshRenderer>().material = offMaterial;
-		targetObject.SendMessage(offFunction, this);
-	}
+        foreach (GameObject obj in targetObject)
+            obj.SendMessage(offFunction, this);
+    }
 
 }
