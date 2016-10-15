@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour {
 
@@ -29,6 +30,9 @@ public class Exit : MonoBehaviour {
 			player.transform.position = pos;
 
 			timer -= Time.deltaTime;
+			if (timer <= 0) {
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+			}
 		}
 	}
 }

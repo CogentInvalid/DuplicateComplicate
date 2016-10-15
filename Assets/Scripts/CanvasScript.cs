@@ -9,7 +9,7 @@ public class CanvasScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		white.active = true;
 	}
 	
 	// Update is called once per frame
@@ -19,6 +19,7 @@ public class CanvasScript : MonoBehaviour {
 			color.a += Time.deltaTime*0.2f;
 		} else {
 			color.a -= Time.deltaTime;
+			if (color.a < 0) color.a = 0;
 		}
 		white.GetComponent<Image>().color = color;
 	}
