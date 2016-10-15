@@ -6,6 +6,11 @@ public class Button : MonoBehaviour {
 	public Material offMaterial;
 	public Material onMaterial;
 
+	public GameObject targetObject;
+	public string onFunction;
+	public string offFunction;
+	public int buttonIndex;
+
 	void Update() {
 
 	}
@@ -24,10 +29,12 @@ public class Button : MonoBehaviour {
 
 	void SwitchOn() {
 		gameObject.GetComponent<MeshRenderer>().material = onMaterial;
+		targetObject.SendMessage(onFunction, this);
 	}
 
 	void SwitchOff() {
 		gameObject.GetComponent<MeshRenderer>().material = offMaterial;
+		targetObject.SendMessage(offFunction, this);
 	}
 
 }
