@@ -8,7 +8,7 @@ public class Carryable : MonoBehaviour {
 	new Rigidbody rigidbody;
 
 	public enum Identity {
-		Box, Balloon, BalloonBox
+		Box, Balloon, Fire, BalloonBox, FireBox
 	}
 
 	public Identity identity;
@@ -25,8 +25,14 @@ public class Carryable : MonoBehaviour {
 		if (GetComponent<Balloon>() != null) {
 			identity = Identity.Balloon;
 		}
+		if (GetComponent<Fire>() != null) {
+			identity = Identity.Fire;
+		}
 		if (GetComponent<Box>() != null && GetComponent<Balloon>() != null) {
 			identity = Identity.BalloonBox;
+		}
+		if (GetComponent<Box>() != null && GetComponent<Fire>() != null) {
+			identity = Identity.FireBox;
 		}
 	}
 	
