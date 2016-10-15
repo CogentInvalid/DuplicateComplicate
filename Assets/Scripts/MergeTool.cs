@@ -58,19 +58,13 @@ public class MergeTool : MonoBehaviour {
 
 	void GrabObject(GameObject obj) {
 		Carryable carryable = obj.GetComponent<Carryable>();
-		carryable.SetTransparent();
-		carryable.held = true;
-		obj.layer = 9; //held objects
-
+		carryable.PickUp();
 		heldObject = obj;
 	}
 
 	void ReleaseObject(GameObject obj) {
 		Carryable carryable = obj.GetComponent<Carryable>();
-		carryable.SetOpaque();
-		carryable.held = false;
-		obj.layer = 8; //objects
-
+		carryable.PutDown();
 		heldObject = null;
 	}
 

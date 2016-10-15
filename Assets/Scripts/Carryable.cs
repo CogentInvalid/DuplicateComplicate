@@ -12,18 +12,28 @@ public class Carryable : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Q)) {
-			SetTransparent();
-		}
+
 	}
 
-	public void SetTransparent() {
+	public void PickUp() {
+		held = true;
+		SetTransparent();
+		gameObject.layer = 9;
+	}
+
+	public void PutDown() {
+		held = false;
+		SetOpaque();
+		gameObject.layer = 8;
+	}
+
+	void SetTransparent() {
 		Color color = GetComponent<MeshRenderer>().material.color;
 		color.a = 0.2f;
 		GetComponent<MeshRenderer>().material.color = color;
 	}
 
-	public void SetOpaque() {
+	void SetOpaque() {
 		Color color = GetComponent<MeshRenderer>().material.color;
 		color.a = 1f;
 		GetComponent<MeshRenderer>().material.color = color;
