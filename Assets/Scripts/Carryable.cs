@@ -25,6 +25,12 @@ public class Carryable : MonoBehaviour {
 		held = false;
 		SetOpaque();
 		gameObject.layer = 8;
+
+		Rigidbody rigidbody = GetComponent<Rigidbody>();
+		float maxReleaseSpeed = 5;
+		if (rigidbody.velocity.magnitude > maxReleaseSpeed) {
+			rigidbody.velocity = rigidbody.velocity.normalized*maxReleaseSpeed;
+		}
 	}
 
 	void SetTransparent() {
