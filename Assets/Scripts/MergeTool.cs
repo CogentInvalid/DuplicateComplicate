@@ -64,6 +64,9 @@ public class MergeTool : MonoBehaviour {
 		carryable.PickUp();
 		heldObject = obj;
 		GetComponent<FirstPersonController>().canJump = false;
+
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		obj.transform.position = ray.GetPoint(grabRange);
 	}
 
 	void ReleaseObject(GameObject obj) {
