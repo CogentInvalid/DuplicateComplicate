@@ -14,16 +14,16 @@ public class Door : MonoBehaviour {
 	
 	void Start () {
 		closedPosition = transform.position;
-		isEnabled = new bool[requiredInputs];
+		isEnabled = new bool[999];
 	}
 	
 	void Update () {
-		bool open = true;
+		int count = 0;
 		foreach (bool b in isEnabled){
-			if (!b) open = false;
+			if (b) count++;
 		}
 
-		if (open) {
+		if (count >= requiredInputs) {
 			transform.position -= (transform.position - openPosition)*8*Time.deltaTime;
 		} else {
 			transform.position -= (transform.position - closedPosition)*8*Time.deltaTime;
