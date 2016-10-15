@@ -130,9 +130,11 @@ public class MergeTool : MonoBehaviour {
 	}
 
 	void SpawnMerged(GameObject obj1, GameObject obj2, GameObject merge) {
+		GameObject merged = Instantiate(merge) as GameObject;
+		obj1.GetComponent<Carryable>().OnMerged(merged);
+		obj2.GetComponent<Carryable>().OnMerged(merged);
 		Destroy(obj1);
 		Destroy(obj2);
-		GameObject merged = Instantiate(merge) as GameObject;
 		GrabObject(merged);
 	}
 
