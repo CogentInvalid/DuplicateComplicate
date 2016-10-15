@@ -18,10 +18,6 @@ public class Door : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Q)) {
-			isEnabled[0] = !isEnabled[0];
-		}
-
 		bool open = true;
 		foreach (bool b in isEnabled){
 			if (!b) open = false;
