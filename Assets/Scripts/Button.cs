@@ -17,13 +17,13 @@ public class Button : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) {
 		if (other.GetComponent<Box>() != null) {
-			SwitchOn();
+			if (!other.GetComponent<Carryable>().held) SwitchOn();
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (other.GetComponent<Box>() != null) {
-			SwitchOff();
+			if (!other.GetComponent<Carryable>().held) SwitchOff();
 		}
 	}
 

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Carryable : MonoBehaviour {
 
+	public bool held = false;
+
 	// Use this for initialization
 	void Start () {
 	
