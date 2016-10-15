@@ -7,7 +7,7 @@ public class MergeTool : MonoBehaviour {
 	public GameObject box;
 
     public int clone_max;
-    private int clone_total = 0;
+    private int clone_total = 999; //default to unlimited clonings
 
 	GameObject heldObject;
 
