@@ -11,19 +11,31 @@ public class Button : MonoBehaviour {
 	public string offFunction;
 	public int buttonIndex;
 
+	private bool heldDown = false;
+	private float timer = 0.1f;
+
 	void Update() {
 
+		if (heldDown) {
+			SwitchOn();
+			timer = 0.1f;
+		} else {
+			timer -= Time.deltaTime;
+			if (timer <= 0) SwitchOff();
+		}
+
+		heldDown = false;
 	}
 
 	void OnTriggerStay(Collider other) {
 		if (other.GetComponent<Box>() != null) {
-			if (!other.GetComponent<Carryable>().held) SwitchOn();
+			if (!other.GetComponent<Carryable>().held) heldDown = true;
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (other.GetComponent<Box>() != null) {
-			if (!other.GetComponent<Carryable>().held) SwitchOff();
+			if (!other.GetComponent<Carryable>().held) heldDown = false;
 		}
 	}
 
