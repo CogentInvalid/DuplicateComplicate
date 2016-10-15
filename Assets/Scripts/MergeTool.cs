@@ -6,6 +6,9 @@ public class MergeTool : MonoBehaviour {
 
 	public GameObject box;
 
+    public int clone_max;
+    private int clone_total = 0;
+
 	GameObject heldObject;
 
 	public float grabRange = 2;
@@ -77,9 +80,10 @@ public class MergeTool : MonoBehaviour {
 	}
 
 	void CloneObject(GameObject obj) {
-		if (obj.GetComponent<Box>() != null) {
+		if (obj.GetComponent<Box>() != null && clone_total != clone_max) {
 			GameObject clone = Instantiate(box);
 			GrabObject(clone);
+            clone_total++;
 		}
 	}
 }
