@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class MergeTool : MonoBehaviour {
 
@@ -60,12 +61,14 @@ public class MergeTool : MonoBehaviour {
 		Carryable carryable = obj.GetComponent<Carryable>();
 		carryable.PickUp();
 		heldObject = obj;
+		GetComponent<FirstPersonController>().canJump = false;
 	}
 
 	void ReleaseObject(GameObject obj) {
 		Carryable carryable = obj.GetComponent<Carryable>();
 		carryable.PutDown();
 		heldObject = null;
+		GetComponent<FirstPersonController>().canJump = true;
 	}
 
 	void CloneObject(GameObject obj) {
