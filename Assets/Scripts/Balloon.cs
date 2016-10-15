@@ -12,7 +12,7 @@ public class Balloon : MonoBehaviour {
 	void Update () {
 		Rigidbody rigidbody = GetComponent<Rigidbody>();
 		Vector3 vel = rigidbody.velocity;
-		vel.y -= (vel.y-1)*Time.deltaTime;
+		vel.y -= (vel.y-1.5f)*Time.deltaTime;
 		rigidbody.velocity = vel;
 	}
 }
