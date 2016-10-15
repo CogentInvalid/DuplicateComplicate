@@ -4,6 +4,8 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class MergeTool : MonoBehaviour {
 
+	public GameObject box;
+
 	GameObject heldObject;
 
 	public float grabRange = 2;
@@ -72,7 +74,9 @@ public class MergeTool : MonoBehaviour {
 	}
 
 	void CloneObject(GameObject obj) {
-		GameObject clone = Instantiate(obj);
-		GrabObject(clone);
+		if (obj.GetComponent<Box>() != null) {
+			GameObject clone = Instantiate(box);
+			GrabObject(clone);
+		}
 	}
 }
