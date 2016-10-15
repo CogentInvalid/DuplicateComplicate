@@ -5,9 +5,23 @@ public class Carryable : MonoBehaviour {
 
 	public bool held = false;
 
-	// Use this for initialization
-	void Start () {
+	public enum Identity {
+		Box, Balloon, BalloonBox
+	}
+
+	public Identity identity;
 	
+	void Start () {
+		//this is bad code. don't try this at home
+		if (GetComponent<Box>() != null) {
+			identity = Identity.Box;
+		}
+		if (GetComponent<Balloon>() != null) {
+			identity = Identity.Balloon;
+		}
+		if (GetComponent<Box>() != null && GetComponent<Balloon>() != null) {
+			identity = Identity.BalloonBox;
+		}
 	}
 	
 	// Update is called once per frame

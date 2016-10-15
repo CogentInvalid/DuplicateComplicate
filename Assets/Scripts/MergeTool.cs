@@ -5,6 +5,8 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class MergeTool : MonoBehaviour {
 
 	public GameObject box;
+	public GameObject balloon;
+	public GameObject balloonBox;
 
     public int clone_max = 999;
 	private int clone_total = 0;
@@ -64,6 +66,19 @@ public class MergeTool : MonoBehaviour {
 				}
 			}
 		}
+		//merging object
+		else if (Input.GetMouseButtonDown(0) && heldObject != null) {
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+
+			if (Physics.Raycast(ray, out hit, grabRange, ~(1 << 9))) {
+				GameObject obj = hit.collider.gameObject;
+				Carryable carryable = obj.GetComponent<Carryable>();
+				if (carryable != null) {
+					MergeObject(obj);
+				}
+			}
+		}
 
 	}
 
@@ -91,4 +106,24 @@ public class MergeTool : MonoBehaviour {
             clone_total++;
 		}
 	}
+
+	void MergeObject(GameObject obj) {
+		Carryable obj1 = heldObject.GetComponent<Carryable>();
+		Carryable obj2 = obj.GetComponent<Carryable>();
+
+		Debug.Log(obj1.identity + ", " + obj2.identity);
+		if (obj1.identity == Carryable.Identity.Box && obj2.identity == Carryable.Identity.Balloon ||
+			obj1.identity == Carryable.Identity.Balloon && obj2.identity == Carryable.Identity.Box) {
+			SpawnMerged(obj1.gameObject, obj2.gameObject, balloonBox);
+		}
+	}
+
+	void SpawnMerged(GameObject obj1, GameObject obj2, GameObject merge) {
+		Destroy(obj1);
+		Destroy(obj2);
+		GameObject merged = Instantiate(merge) as GameObject;
+		GrabObject(merged);
+	}
+
+
 }
