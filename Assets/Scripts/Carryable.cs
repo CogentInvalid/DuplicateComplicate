@@ -7,6 +7,8 @@ public class Carryable : MonoBehaviour {
 
 	new Rigidbody rigidbody;
 
+	private ItemSpawner itemSpawner;
+
 	public enum Identity {
 		Box, Balloon, Fire, BalloonBox, FireBox
 	}
@@ -70,5 +72,29 @@ public class Carryable : MonoBehaviour {
 		Color color = GetComponent<MeshRenderer>().material.color;
 		color.a = 1f;
 		GetComponent<MeshRenderer>().material.color = color;
+	}
+
+	public GameObject Split() {
+		MergeTool mergeTool = GameObject.FindGameObjectWithTag("Player").GetComponent<MergeTool>(); //uugggghhhh
+
+		if (identity == Identity.BalloonBox) {
+			GameObject box = Instantiate(mergeTool.box) as GameObject;
+			box.transform.position = transform.position;
+			GameObject balloon = Instantiate(mergeTool.balloon) as GameObject;
+			balloon.transform.position = transform.position;
+			Destroy(gameObject);
+			return balloon;
+		}
+		return null;
+	}
+
+	public void OnMerged(GameObject newObj) {
+		if (itemSpawner != null) {
+			itemSpawner.SetTrackedItem(newObj);
+		}
+	}
+
+	public void SetItemSpawner(ItemSpawner spawner) {
+		itemSpawner = spawner;
 	}
 }
