@@ -6,9 +6,11 @@ public class MergeTool : MonoBehaviour {
 
 	public GameObject box;
 	public GameObject balloon;
+	public GameObject fire;
 	public GameObject balloonBox;
+	public GameObject fireBox;
 
-    public int clone_max = 999;
+	public int clone_max = 999;
 	private int clone_total = 0;
 
 	GameObject heldObject;
@@ -111,10 +113,20 @@ public class MergeTool : MonoBehaviour {
 		Carryable obj1 = heldObject.GetComponent<Carryable>();
 		Carryable obj2 = obj.GetComponent<Carryable>();
 		
+		//box + balloon = balloonbox
 		if (obj1.identity == Carryable.Identity.Box && obj2.identity == Carryable.Identity.Balloon ||
 			obj1.identity == Carryable.Identity.Balloon && obj2.identity == Carryable.Identity.Box) {
 			SpawnMerged(obj1.gameObject, obj2.gameObject, balloonBox);
 		}
+
+		//box + fire = firebox
+		if (obj1.identity == Carryable.Identity.Box && obj2.identity == Carryable.Identity.Fire ||
+			obj1.identity == Carryable.Identity.Fire && obj2.identity == Carryable.Identity.Box) {
+			SpawnMerged(obj1.gameObject, obj2.gameObject, fireBox);
+		}
+
+		//TODO:
+		//fire + balloon = balloonfire
 	}
 
 	void SpawnMerged(GameObject obj1, GameObject obj2, GameObject merge) {
