@@ -110,8 +110,7 @@ public class MergeTool : MonoBehaviour {
 	void MergeObject(GameObject obj) {
 		Carryable obj1 = heldObject.GetComponent<Carryable>();
 		Carryable obj2 = obj.GetComponent<Carryable>();
-
-		Debug.Log(obj1.identity + ", " + obj2.identity);
+		
 		if (obj1.identity == Carryable.Identity.Box && obj2.identity == Carryable.Identity.Balloon ||
 			obj1.identity == Carryable.Identity.Balloon && obj2.identity == Carryable.Identity.Box) {
 			SpawnMerged(obj1.gameObject, obj2.gameObject, balloonBox);
