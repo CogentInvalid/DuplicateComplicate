@@ -7,6 +7,8 @@ public class Door : MonoBehaviour {
 	public Vector3 openPosition;
 	public float moveTime = 1;
 
+	public int currentInputs;
+
 	private bool[] isEnabled;
 
 	private float openTimer;
@@ -22,6 +24,7 @@ public class Door : MonoBehaviour {
 		foreach (bool b in isEnabled){
 			if (b) count++;
 		}
+		currentInputs = count;
 
 		if (count >= requiredInputs) {
 			transform.position -= (transform.position - openPosition)*8*Time.deltaTime;
