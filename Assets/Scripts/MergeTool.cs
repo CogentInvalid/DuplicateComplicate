@@ -31,6 +31,11 @@ public class MergeTool : MonoBehaviour {
 				Carryable carryable = obj.GetComponent<Carryable>();
 				if (carryable != null) {
 					GrabObject(obj);
+				} else {
+					PressButton button = obj.GetComponent<PressButton>();
+					if (button != null) {
+						button.Press();
+					}
 				}
 			}
 		}
