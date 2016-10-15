@@ -24,13 +24,12 @@ public class Door : MonoBehaviour {
 		}
 
 		if (open) {
-			openTimer += Time.deltaTime;
-			if (openTimer > moveTime) openTimer = moveTime;
+			transform.position -= (transform.position - openPosition)*8*Time.deltaTime;
 		} else {
-			openTimer -= Time.deltaTime;
-			if (openTimer < 0) openTimer = 0;
+			transform.position -= (transform.position - closedPosition)*8*Time.deltaTime;
 		}
-		transform.position = Vector3.Lerp(closedPosition, openPosition, openTimer/moveTime);
+
+		
 	}
 
 	public void SetInput(int index, bool value) {
