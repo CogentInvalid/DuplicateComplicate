@@ -17,6 +17,11 @@ public class MergeTool : MonoBehaviour {
 
 	public float grabRange = 2;
 
+	public AudioClip sfxGrab;
+	public AudioClip sfxDrop;
+	public AudioClip sfxClone;
+	public AudioClip sfxMerge;
+
 	// Use this for initialization
 	void Start () {
 
@@ -96,6 +101,9 @@ public class MergeTool : MonoBehaviour {
 
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		obj.transform.position = ray.GetPoint(grabRange);
+
+		GetComponent<AudioSource>().clip = sfxGrab;
+		GetComponent<AudioSource>().Play();
 	}
 
 	void ReleaseObject(GameObject obj) {
@@ -103,6 +111,9 @@ public class MergeTool : MonoBehaviour {
 		carryable.PutDown();
 		heldObject = null;
 		GetComponent<FirstPersonController>().canJump = true;
+
+		GetComponent<AudioSource>().clip = sfxDrop;
+		GetComponent<AudioSource>().Play();
 	}
 
 	void CloneObject(GameObject obj) {
@@ -110,6 +121,9 @@ public class MergeTool : MonoBehaviour {
 			GameObject clone = Instantiate(box);
 			GrabObject(clone);
             clone_total++;
+
+			GetComponent<AudioSource>().clip = sfxClone;
+			GetComponent<AudioSource>().Play();
 		}
 	}
 
@@ -140,6 +154,8 @@ public class MergeTool : MonoBehaviour {
 		Destroy(obj1);
 		Destroy(obj2);
 		GrabObject(merged);
+		GetComponent<AudioSource>().clip = sfxMerge;
+		GetComponent<AudioSource>().Play();
 	}
 
 

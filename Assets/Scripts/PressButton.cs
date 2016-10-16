@@ -6,6 +6,8 @@ public class PressButton : MonoBehaviour {
 	public GameObject targetObject;
 	public string pressFunction;
 
+	public AudioClip sfx;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -18,5 +20,7 @@ public class PressButton : MonoBehaviour {
 
 	public void Press() {
 		targetObject.SendMessage(pressFunction, this);
+		GetComponent<AudioSource>().clip = sfx;
+		GetComponent<AudioSource>().Play();
 	}
 }

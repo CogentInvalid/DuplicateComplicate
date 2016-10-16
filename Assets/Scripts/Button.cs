@@ -15,16 +15,23 @@ public class Button : MonoBehaviour {
 	public int buttonIndex;
 
 	private bool heldDown = false;
+	private bool off = true;
 	private float timer = 0.1f;
+
+	public AudioClip sfxDown;
+	public AudioClip sfxUp;
 
 	void Update() {
 
 		if (heldDown) {
-			SwitchOn();
 			timer = 0.1f;
+			off = false;
 		} else {
 			timer -= Time.deltaTime;
-			if (timer <= 0) SwitchOff();
+			if (timer <= 0) {
+				if (!off) SwitchOff();
+				off = true;
+			}
 		}
 
 		heldDown = false;
@@ -36,7 +43,10 @@ public class Button : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) {
 		if (other.GetComponent<Box>() != null) {
-			if (!other.GetComponent<Carryable>().held) heldDown = true;
+			if (!heldDown) {
+				SwitchOn();
+				if (!other.GetComponent<Carryable>().held) heldDown = true;
+			}
 		}
 	}
 
@@ -52,9 +62,11 @@ public class Button : MonoBehaviour {
             obj.SendMessage(onFunction, this);
 
 		targetY = -0.01f;
-		//Vector3 pos = buttonModel.transform.localPosition;
-		//pos.y = 0.014f;
-		//buttonModel.transform.localPosition = pos;
+
+		AudioSource audio = GetComponent<AudioSource>();
+		audio.clip = sfxDown;
+		//audio.Play();
+		
 	}
 
 	void SwitchOff() {
@@ -63,9 +75,10 @@ public class Button : MonoBehaviour {
             obj.SendMessage(offFunction, this);
 
 		targetY = 0.072f;
-		//Vector3 pos = buttonModel.transform.localPosition;
-		//pos.y = 0.072f;
-		//buttonModel.transform.localPosition = pos;
+
+		AudioSource audio = GetComponent<AudioSource>();
+		audio.clip = sfxUp;
+		audio.Play();
 
 	}
 
