@@ -15,22 +15,16 @@ public class Button : MonoBehaviour {
 	public int buttonIndex;
 
 	private bool heldDown = false;
-	private bool off = true;
 	private float timer = 0.1f;
-
-	public AudioClip sfxDown;
-	public AudioClip sfxUp;
 
 	void Update() {
 
 		if (heldDown) {
 			timer = 0.1f;
-			off = false;
 		} else {
 			timer -= Time.deltaTime;
 			if (timer <= 0) {
-				if (!off) SwitchOff();
-				off = true;
+				SwitchOff();
 			}
 		}
 
@@ -62,10 +56,6 @@ public class Button : MonoBehaviour {
             obj.SendMessage(onFunction, this);
 
 		targetY = -0.01f;
-
-		AudioSource audio = GetComponent<AudioSource>();
-		audio.clip = sfxDown;
-		//audio.Play();
 		
 	}
 
@@ -75,10 +65,6 @@ public class Button : MonoBehaviour {
             obj.SendMessage(offFunction, this);
 
 		targetY = 0.072f;
-
-		AudioSource audio = GetComponent<AudioSource>();
-		audio.clip = sfxUp;
-		audio.Play();
 
 	}
 
