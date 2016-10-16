@@ -1,20 +1,57 @@
 fileFormatVersion: 2
-guid: 070343be25e53d44bb214cb79225fd9d
+guid: f30784903bb4dd9458303e891d14e51f
+timeCreated: 1476641907
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Cylinder
-    100004: Cylinder_001
-    400000: //RootNode
-    400002: Cylinder
-    400004: Cylinder_001
+    100000: Cylinder
+    100002: Cylinder_001
+    100004: Cylinder_002
+    100006: //RootNode
+    100008: Torus
+    100010: Torus_001
+    100012: Torus_002
+    100014: Torus_003
+    100016: Torus_004
+    100018: Torus_005
+    400000: Cylinder
+    400002: Cylinder_001
+    400004: Cylinder_002
+    400006: //RootNode
+    400008: Torus
+    400010: Torus_001
+    400012: Torus_002
+    400014: Torus_003
+    400016: Torus_004
+    400018: Torus_005
     2300000: Cylinder
     2300002: Cylinder_001
+    2300004: Cylinder_002
+    2300006: Torus
+    2300008: Torus_001
+    2300010: Torus_002
+    2300012: Torus_003
+    2300014: Torus_004
+    2300016: Torus_005
     3300000: Cylinder
     3300002: Cylinder_001
-    4300000: Cylinder_001
+    3300004: Cylinder_002
+    3300006: Torus
+    3300008: Torus_001
+    3300010: Torus_002
+    3300012: Torus_003
+    3300014: Torus_004
+    3300016: Torus_005
+    4300000: Cylinder_002
     4300002: Cylinder
+    4300004: Cylinder_001
+    4300006: Torus_005
+    4300008: Torus_004
+    4300010: Torus_003
+    4300012: Torus_002
+    4300014: Torus_001
+    4300016: Torus
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -41,7 +78,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
