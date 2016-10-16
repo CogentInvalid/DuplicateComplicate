@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Button : MonoBehaviour {
 
+	public GameObject buttonModel;
+	private float targetY = 0.014f;
+
 	public Material offMaterial;
 	public Material onMaterial;
 
@@ -25,6 +28,10 @@ public class Button : MonoBehaviour {
 		}
 
 		heldDown = false;
+
+		Vector3 pos = buttonModel.transform.localPosition;
+		pos.y -= (pos.y-targetY)*8*Time.deltaTime;
+		buttonModel.transform.localPosition = pos;
 	}
 
 	void OnTriggerStay(Collider other) {
@@ -43,12 +50,23 @@ public class Button : MonoBehaviour {
 		gameObject.GetComponent<MeshRenderer>().material = onMaterial;
         foreach(GameObject obj in targetObject)
             obj.SendMessage(onFunction, this);
+
+		targetY = 0.014f;
+		//Vector3 pos = buttonModel.transform.localPosition;
+		//pos.y = 0.014f;
+		//buttonModel.transform.localPosition = pos;
 	}
 
 	void SwitchOff() {
 		gameObject.GetComponent<MeshRenderer>().material = offMaterial;
         foreach (GameObject obj in targetObject)
             obj.SendMessage(offFunction, this);
-    }
+
+		targetY = 0.072f;
+		//Vector3 pos = buttonModel.transform.localPosition;
+		//pos.y = 0.072f;
+		//buttonModel.transform.localPosition = pos;
+
+	}
 
 }
