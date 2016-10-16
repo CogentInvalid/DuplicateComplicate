@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.SceneManagement;
 
 public class MergeTool : MonoBehaviour {
 
@@ -33,6 +34,9 @@ public class MergeTool : MonoBehaviour {
 		//quit game
 		if (Input.GetKeyDown(KeyCode.Escape))
 			Application.Quit();
+
+		if (Input.GetKeyDown(KeyCode.R))
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
 		//picking up/dropping object
 		if (Input.GetKeyDown(KeyCode.E) && heldObject == null) {
