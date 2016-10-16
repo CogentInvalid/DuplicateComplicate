@@ -46,4 +46,5 @@ public class Door : MonoBehaviour {
 	public void BoxOff(Button button) {
 		SetInput(button.buttonIndex, false);
 	}
+
 }

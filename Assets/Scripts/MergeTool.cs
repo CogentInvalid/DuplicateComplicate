@@ -25,6 +25,10 @@ public class MergeTool : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		//quit game
+		if (Input.GetKeyDown(KeyCode.Escape))
+			Application.Quit();
+
 		//picking up/dropping object
 		if (Input.GetKeyDown(KeyCode.E) && heldObject == null) {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
