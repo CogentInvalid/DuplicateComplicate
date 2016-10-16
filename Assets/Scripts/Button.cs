@@ -51,7 +51,7 @@ public class Button : MonoBehaviour {
         foreach(GameObject obj in targetObject)
             obj.SendMessage(onFunction, this);
 
-		targetY = 0.014f;
+		targetY = -0.01f;
 		//Vector3 pos = buttonModel.transform.localPosition;
 		//pos.y = 0.014f;
 		//buttonModel.transform.localPosition = pos;
