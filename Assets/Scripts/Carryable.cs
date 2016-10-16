@@ -63,15 +63,19 @@ public class Carryable : MonoBehaviour {
 	}
 
 	void SetTransparent() {
-		Color color = GetComponent<MeshRenderer>().material.color;
-		color.a = 0.2f;
-		GetComponent<MeshRenderer>().material.color = color;
+		if (GetComponent<MeshRenderer>() != null) {
+			Color color = GetComponent<MeshRenderer>().material.color;
+			color.a = 0.2f;
+			GetComponent<MeshRenderer>().material.color = color;
+		}
 	}
 
 	void SetOpaque() {
-		Color color = GetComponent<MeshRenderer>().material.color;
-		color.a = 1f;
-		GetComponent<MeshRenderer>().material.color = color;
+		if (GetComponent<MeshRenderer>() != null) {
+			Color color = GetComponent<MeshRenderer>().material.color;
+			color.a = 1f;
+			GetComponent<MeshRenderer>().material.color = color;
+		}
 	}
 
 	public GameObject Split() {
