@@ -1,22 +1,12 @@
 fileFormatVersion: 2
-guid: 070343be25e53d44bb214cb79225fd9d
+guid: 20ee496900e6cfd49908532eb2719b96
+timeCreated: 1476641514
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Cylinder
-    100004: Cylinder_001
     400000: //RootNode
-    400002: Cylinder
-    400004: Cylinder_001
-    2300000: Cylinder
-    2300002: Cylinder_001
-    3300000: Cylinder
-    3300002: Cylinder_001
-    4300000: Cylinder_001
-    4300002: Cylinder
-    7400000: Default Take
-    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -75,7 +65,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
