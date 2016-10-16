@@ -52,7 +52,7 @@ public class MergeTool : MonoBehaviour {
 			Rigidbody rigid = heldObject.GetComponent<Rigidbody>();
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			Vector3 targetPos = ray.GetPoint(2);
-			rigid.velocity = -(heldObject.transform.position-targetPos)*10;
+			rigid.velocity = -(heldObject.transform.position-targetPos)*20;
 		}
 
 		//duplicating object
