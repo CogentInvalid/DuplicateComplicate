@@ -9,9 +9,17 @@ public class Exit : MonoBehaviour {
 
 	float timer = 5;
 
+	public AudioClip sfx;
+
 	// Use this for initialization
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "Player") {
+			if (player == null) {
+				//play sound
+				GetComponent<AudioSource>().clip = sfx;
+				GetComponent<AudioSource>().Play();
+			}
+
 			player = other.gameObject;
 			player.GetComponent<Rigidbody>().useGravity = false;
 			player.GetComponent<CharacterController>().enabled = false;

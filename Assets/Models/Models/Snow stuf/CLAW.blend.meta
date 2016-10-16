@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 005d73c1267d2944cbf03909de2c58e0
+=======
+<<<<<<< HEAD
+guid: c76edd8c43f8afe458ec9de7f038f1be
+=======
+guid: 9109032385fffcc42ae19d847195a009
+>>>>>>> origin/master
+>>>>>>> origin/master
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
